@@ -173,6 +173,14 @@ loaded first).  The current Ham::Scraper class in CPAN is broken, so
 this isn't on by default.  WS6Z has a patched copy that he's trying to
 feed back to the author.
 
+=item YFK
+
+If you're using the yfk program from the yfklog package for doing QSO
+logging, this module will look up previous contact information with
+that person.  You need to specify your callsign in the ~/.callsignrc
+file with a line like "callsign WS6Z" for example so it finds the
+right database lookup table to use.
+
 =back
 
 =item -f I<FORMATTING STRING>

@@ -5,7 +5,7 @@ package Ham::Callsign::DB;
 use Ham::Callsign::Base;
 our @ISA = qw(Ham::Callsign::Base);
 
-our $VERSION = "0.1";
+our $VERSION = "0.2";
 
 use DBI;
 use strict;
@@ -31,6 +31,7 @@ sub initialize_dbs {
 	    $self->{'dbs'}{$db} = eval "new Ham::Callsign::DB::$db";
 	    if (!$self->{'dbs'}{$db}) {
 		Warn("failed to initialize a new '$db' database");
+		Debug("$@");
 	    } else {
 		$self->{'dbs'}{$db}{'master'} = $self;
 		$self->{'dbs'}{$db}{'dbh'} = $self->{'dbh'};

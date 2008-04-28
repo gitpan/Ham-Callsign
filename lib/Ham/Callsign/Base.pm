@@ -23,7 +23,8 @@ sub init {
 
 sub read_config {
     my $self = shift;
-    my $configfile = $ENV{'CALLSIGNRC'} || $ENV{'HOME'} . "/.callsignrc";
+    my $configfile = $self->{'callsignrc'} || $ENV{'CALLSIGNRC'} ||
+      $ENV{'HOME'} . "/.callsignrc";
     return if (! -f $configfile);
     Debug("reading $configfile\n");
     open(I,$configfile);
