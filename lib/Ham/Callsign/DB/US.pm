@@ -62,7 +62,7 @@ sub do_lookup {
     $self->{'lookuphd'}->finish;
 
     my @results;
-    if ($row1 && $row2) {
+    if ($row1 && $row2 && !$self->{'USmultiple'}) {
 	# take the most recent ULS file number
 	if ($row1->{'uls_file_number'} > $row2->{'uls_file_number'}) {
 	    $row2 = undef;

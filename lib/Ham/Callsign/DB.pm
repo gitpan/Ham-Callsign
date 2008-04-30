@@ -5,7 +5,7 @@ package Ham::Callsign::DB;
 use Ham::Callsign::Base;
 our @ISA = qw(Ham::Callsign::Base);
 
-our $VERSION = "0.2";
+our $VERSION = "0.3";
 
 use DBI;
 use strict;
