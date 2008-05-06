@@ -26,6 +26,8 @@ sub do_lookup {
     my %qrz = Ham::Scraper::QRZ($callsign);
     my %results = (%qrz, FromDB => 'QRZ');
 
+    return if (!$results{'Name'});
+
     $results{'thecallsign'} = uc($callsign);
     $results{'entity_name'} = $qrz{'Name'};
 

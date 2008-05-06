@@ -5,7 +5,7 @@ package Ham::Callsign::DB;
 use Ham::Callsign::Base;
 our @ISA = qw(Ham::Callsign::Base);
 
-our $VERSION = "0.3";
+our $VERSION = "0.31";
 
 use DBI;
 use strict;
@@ -23,6 +23,12 @@ sub init {
 
 sub initialize_dbs {
     my ($self, $dbs) = @_;
+    if (!$dbs || ref($dbs) ne 'ARRAY') {
+	$dbs = [split(/,\s*/, $self->{'sets'})];
+    }
+    if ($#$dbs == -1) {
+	$dbs = [qw(US DX)];
+    }
     foreach my $db (@$dbs) {
 	my $havedb = eval "require Ham::Callsign::DB::$db";
 	if (!$havedb) {
@@ -105,7 +111,7 @@ Ham::Callsign::DB
   my $db = new Ham::Callsign::DB();
 
   # bootstrap everything and load the US database backend
-  $db->initalize_dbs(["US"]);
+  $db->initialize_dbs(["US"]);
 
   # load data from a given file set
   # (not all backends need this)
